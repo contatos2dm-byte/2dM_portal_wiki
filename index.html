@@ -1,226 +1,652 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dois de Muitos - Portal de Frutos e Conexões</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dois de Muitos - Portal de Frutos e Conexões</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
 
-    :root {
-      --terra-claro: #f5ede1;
-      --terra-medio: #d4a574;
-      --terra-escuro: #8b6f47;
-      --verde-natureza: #6b8e5f;
-      --azul-viagem: #4a7c8c;
-      --rosa-poesia: #c4a5a5;
-      --ouro-poético: #d4a574;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--terra-claro);
-      color: var(--terra-escuro);
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
+        :root {
+            --terra-claro: #f5ede1;
+            --terra-medio: #d4a574;
+            --terra-escuro: #8b6f47;
+            --verde-natureza: #6b8e5f;
+            --azul-viagem: #4a7c8c;
+            --rosa-poesia: #c4a5a5;
+            --ouro-poético: #d4a574;
+        }
 
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      color: var(--terra-escuro);
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--terra-claro);
+            color: var(--terra-escuro);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
 
-    header {
-      background: linear-gradient(135deg, rgba(212,165,116,0.1), rgba(107,142,95,0.05));
-      border-bottom: 2px solid var(--terra-medio);
-      padding: 2rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(10px);
-    }
+        h1,h2,h3 { font-family: 'Playfair Display', serif; font-weight:700; color:var(--terra-escuro); }
 
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(107, 142, 95, 0.05) 100%);
+            border-bottom: 2px solid var(--terra-medio);
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--terra-escuro);
-      text-decoration: none;
-    }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .logo span { color: var(--verde-natureza); }
+        .logo { font-size:1.8rem; font-weight:700; color:var(--terra-escuro); text-decoration:none; letter-spacing:1px; }
+        .logo span { color:var(--verde-natureza); }
 
-    nav { display: flex; gap: 2rem; }
+        nav { display:flex; gap:2rem; list-style:none; }
+        nav a {
+            color: var(--terra-escuro);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-    nav a {
-      color: var(--terra-escuro);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      position: relative;
-      transition: all 0.3s ease;
-    }
+        nav a:hover { color: var(--verde-natureza); }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--verde-natureza);
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after { width: 100%; }
 
-    nav a:hover { color: var(--verde-natureza); }
+        /* ===== HERO ===== */
+        .hero {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            min-height: 600px;
+            display:flex; flex-direction:column; justify-content:center; align-items:center;
+        }
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--verde-natureza);
-      transition: width 0.3s ease;
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--terra-escuro), var(--verde-natureza));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    nav a:hover::after { width: 100%; }
+        .hero-tagline {
+            font-size:1.4rem;
+            color: var(--rosa-poesia);
+            font-style: italic;
+            margin-bottom:2rem;
+            font-family: 'Playfair Display', serif;
+        }
 
-    .hero {
-      max-width: 1200px;
-      margin: 4rem auto;
-      padding: 0 2rem;
-      text-align: center;
-      min-height: 600px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+        .hero-description { font-size:1.1rem; color:var(--terra-escuro); max-width:700px; margin:0 auto 3rem; line-height:1.8; }
 
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-      background: linear-gradient(135deg, var(--terra-escuro), var(--verde-natureza));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .hero-image {
+            width:100%; max-width:600px; height:300px;
+            background: linear-gradient(135deg, rgba(212,165,116,0.2), rgba(107,142,95,0.2));
+            border-radius:20px; border:2px solid var(--terra-medio);
+            display:flex; align-items:center; justify-content:center; font-size:4rem; margin-top:2rem;
+        }
 
-    .hero-tagline {
-      font-size: 1.4rem;
-      color: var(--rosa-poesia);
-      font-style: italic;
-      margin-bottom: 2rem;
-    }
+        /* ===== BUTTONS ===== */
+        .btn { display:inline-block; padding:0.9rem 2rem; border-radius:50px; text-decoration:none; font-weight:600; transition: all 0.3s ease; border:none; cursor:pointer; font-size:0.95rem; }
+        .btn-primary { background-color: var(--verde-natureza); color:white; }
+        .btn-primary:hover { background-color: var(--azul-viagem); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(107,142,95,0.3); }
+        .btn-secondary { background-color: transparent; color: var(--terra-escuro); border:2px solid var(--terra-medio); }
+        .btn-secondary:hover { background-color: var(--terra-medio); color:white; transform: translateY(-2px); }
 
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-    }
+        /* ===== SECTIONS ===== */
+        section { max-width:1200px; margin:4rem auto; padding:0 2rem; }
+        section h2 { font-size:2.5rem; margin-bottom:2rem; text-align:center; position:relative; padding-bottom:1rem; }
+        section h2::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:80px; height:3px; background: linear-gradient(90deg, var(--terra-medio), var(--verde-natureza)); border-radius:2px; }
 
-    .btn-primary { background-color: var(--verde-natureza); color: white; }
-    .btn-primary:hover { background-color: var(--azul-viagem); transform: translateY(-2px); }
+        /* ABOUT */
+        .about-content { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; margin-top:2rem; }
+        .about-text h3 { font-size:1.8rem; margin-bottom:1rem; color:var(--verde-natureza); }
+        .about-image { width:100%; height:400px; background: linear-gradient(135deg, rgba(107,142,95,0.2), rgba(74,124,140,0.2)); border-radius:20px; border:2px solid var(--terra-medio); display:flex; align-items:center; justify-content:center; font-size:5rem; }
 
-    footer {
-      background: linear-gradient(135deg, var(--terra-escuro), var(--verde-natureza));
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-      margin-top: 4rem;
-    }
+        /* WIKI TIMELINE */
+        .wiki-timeline { position:relative; padding:2rem 0; }
+        .timeline-item { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-bottom:3rem; align-items:center; }
+        .timeline-item:nth-child(even) { direction: rtl; }
+        .timeline-item:nth-child(even) > * { direction: ltr; }
+        .timeline-content { background:white; padding:2rem; border-radius:15px; border-left:4px solid var(--verde-natureza); box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition:all 0.3s ease; }
+        .timeline-content:hover { transform: translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,0.12); }
+        .timeline-image { width:100%; height:250px; background: linear-gradient(135deg, rgba(212,165,116,0.2), rgba(196,165,165,0.2)); border-radius:15px; border:2px solid var(--terra-medio); display:flex; align-items:center; justify-content:center; font-size:4rem; }
 
-    @media (max-width: 768px) {
-      .header-container { flex-direction: column; gap: 1rem; }
-      nav { flex-direction: column; gap: 1rem; }
-    }
-  </style>
+        /* ATELIER */
+        .atelier-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin-top:2rem; }
+        .atelier-card { background:white; border-radius:15px; overflow:hidden; box-shadow:0 5px 20px rgba(0,0,0,0.08); transition:all 0.3s ease; border:1px solid rgba(212,165,116,0.2); }
+        .atelier-card:hover { transform: translateY(-10px); box-shadow:0 15px 40px rgba(0,0,0,0.15); }
+        .atelier-image { width:100%; height:200px; background: linear-gradient(135deg, rgba(212,165,116,0.3), rgba(107,142,95,0.3)); display:flex; align-items:center; justify-content:center; font-size:3rem; }
+        .atelier-content { padding:1.5rem; }
+        .atelier-price { font-size:1.3rem; color:var(--ouro-poético); font-weight:700; margin-top:1rem; }
+
+        /* NFTS */
+        .nft-gallery { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:2rem; margin-top:2rem; }
+        .nft-card { background:white; border-radius:15px; overflow:hidden; box-shadow:0 5px 20px rgba(0,0,0,0.08); transition:all 0.3s ease; border:2px solid var(--terra-medio); }
+        .nft-card:hover { transform: scale(1.05) rotateY(5deg); box-shadow:0 15px 40px rgba(0,0,0,0.15); }
+        .nft-image { width:100%; height:200px; background: linear-gradient(135deg, rgba(196,165,165,0.3), rgba(74,124,140,0.3)); display:flex; align-items:center; justify-content:center; font-size:3rem; }
+        .nft-content { padding:1.5rem; }
+
+        /* CONTRIBUTION */
+        .contribution-section { background: linear-gradient(135deg, rgba(212,165,116,0.1), rgba(107,142,95,0.1)); border-radius:20px; padding:3rem; margin:4rem auto; border:2px solid var(--terra-medio); }
+        .packages-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:2rem; margin-top:2rem; }
+        .package-card { background:white; border-radius:15px; padding:2rem; text-align:center; border:2px solid var(--terra-medio); transition:all 0.3s ease; }
+        .package-card:hover { border-color:var(--verde-natureza); box-shadow:0 10px 30px rgba(107,142,95,0.2); transform: translateY(-5px); }
+
+        /* CONTACT */
+        .contact-section { background:white; border-radius:20px; padding:3rem; border:2px solid var(--terra-medio); margin:4rem auto; }
+        .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2rem; }
+        .contact-form { display:flex; flex-direction:column; gap:1.5rem; }
+        .form-group input, .form-group textarea { padding:0.8rem; border:1px solid var(--terra-medio); border-radius:10px; font-family:'Poppins', sans-serif; transition:all 0.3s ease; }
+        .form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--verde-natureza); box-shadow: 0 0 0 3px rgba(107,142,95,0.1); }
+
+        /* FOOTER */
+        footer { background: linear-gradient(135deg, var(--terra-escuro), var(--verde-natureza)); color:white; padding:3rem 2rem; text-align:center; margin-top:4rem; }
+
+        /* RESPONSIVE */
+        @media (max-width:768px) {
+            .header-container { flex-direction:column; gap:1rem; }
+            nav { flex-direction:column; gap:1rem; text-align:center; }
+            .hero h1 { font-size:2.2rem; }
+            .about-content, .contact-grid { grid-template-columns:1fr; }
+            .timeline-item { grid-template-columns:1fr; }
+            .timeline-item:nth-child(even) { direction: ltr; }
+            section { padding: 0 1rem; }
+            .contribution-section { padding:2rem 1rem; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <a href="#" class="logo">Dois de <span>Muitos</span></a>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#conhecimento">Conhecimento</a>
-        <a href="#contato">Contato</a>
-      </nav>
-    </div>
-  </header>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Dois de <span>Muitos</span></a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#wiki">Wiki</a>
+                <a href="#atelier">Ateliê</a>
+                <a href="#nfts">NFTs</a>
+                <a href="#contribuir">Contribuir</a>
+                <a href="#conhecimento">Conhecimento</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <h1>Sementes que Germinam em Movimento</h1>
-    <p class="hero-tagline">"Somos o que se espalha. Somos o que permanece."</p>
-    <p style="max-width:700px;">Um portal de frutos e conexões nascidos de diferentes iniciativas colaborativas. Viajamos pelo Brasil levando arte, poesia e sabedoria ancestral.</p>
-    <div style="margin-top:2rem;">
-      <a href="#conhecimento" class="btn btn-primary">Acessar Conhecimento</a>
-    </div>
-  </section>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <h1>Sementes que Germinam em Movimento</h1>
+        <p class="hero-tagline">"Somos o que se espalha. Somos o que permanece."</p>
+        <p class="hero-description">
+            Um portal de frutos e conexões nascidos de diferentes iniciativas colaborativas. Viajamos pelo Brasil levando arte, poesia e sabedoria ancestral para comunidades que cultivam transformação.
+        </p>
+        <div class="hero-image">🌱✨🎨</div>
+        <div style="margin-top: 2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+            <a href="#contribuir" class="btn btn-primary">Contribuir Agora</a>
+            <a href="#sobre" class="btn btn-secondary">Conhecer Nossa História</a>
+        </div>
+    </section>
 
-  <!-- SOBRE -->
-  <section id="sobre" style="max-width:1000px;margin:0 auto;padding:2rem;text-align:center;">
-    <h2>Sobre o Projeto</h2>
-    <p>O coletivo <strong>Dois de Muitos</strong> integra arte, ancestralidade e tecnologia em um movimento colaborativo de transformação social.</p>
-  </section>
+    <!-- ABOUT SECTION -->
+    <section id="sobre">
+        <h2>Sobre o Projeto</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Uma Jornada de Transformação</h3>
+                <p>
+                    Em 2025, iniciamos uma missão que conecta arte, tecnologia e sabedoria ancestral. Começamos com o <strong>Workshop Avatar</strong>, formação para expressão pessoal e autenticidade.
+                </p>
+                <p>
+                    Depois criamos o <strong>Grupo Teias</strong>, compilado de aprendizados de três anos visitando comunidades intencionais. Seguimos com um <strong>Coletivo de Artes e Poesia</strong>, publicando dois livros poéticos.
+                </p>
+                <p>
+                    Agora desenvolvemos o <strong>Ateliê de Manifestações Artísticas Originárias</strong>, criando itens próprios e apoiando comunidades. E em breve, uma grande viagem-missão pelo Brasil.
+                </p>
+                <a href="#" class="btn btn-primary" style="margin-top:1rem;">Ler História Completa</a>
+            </div>
+            <div class="about-image">🌍🎭📚</div>
+        </div>
+    </section>
 
-  <!-- PORTAL DE CONHECIMENTO (SPA Dinâmica) -->
-  <section id="conhecimento" style="max-width:1200px;margin:4rem auto;padding:0 2rem;">
-    <h2>Portal de Conhecimento</h2>
-    <p style="text-align:center;color:var(--terra-escuro);margin-bottom:2rem;">
-      Espaço de trocas, saberes e partilhas da rede Dois de Muitos 🌱
-    </p>
-    <div id="conteudo-conhecimento" 
-         style="background:white;border-radius:20px;border:2px solid var(--terra-medio);
-                padding:2rem;box-shadow:0 5px 25px rgba(0,0,0,0.05);">
-      <p style="text-align:center;color:var(--terra-medio);">
-        Carregando conteúdo do portal...
-      </p>
-    </div>
-  </section>
+    <!-- WIKI TIMELINE -->
+    <section id="wiki">
+        <h2>Wiki de Frutos e Iniciativas</h2>
+        <div class="wiki-timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">1º Semestre 2025</div>
+                    <h3>Workshop Avatar</h3>
+                    <p>Formação intensiva sobre expressão pessoal, autenticidade e presença. Um espaço de acolhimento para descobrir quem somos além das máscaras.</p>
+                </div>
+                <div class="timeline-image">🎭</div>
+            </div>
 
-  <!-- CONTATO -->
-  <section id="contato" style="text-align:center;padding:3rem;background:white;border-top:2px solid var(--terra-medio);">
-    <h2>Contato</h2>
-    <p>Fale conosco: <a href="mailto:cristina.avatar@gmail.com" class="text-green-700 font-semibold">cristina.avatar@gmail.com</a></p>
-  </section>
+            <div class="timeline-item">
+                <div class="timeline-image">🌐</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Compilação 2022-2025</div>
+                    <h3>Grupo Teias</h3>
+                    <p>Aprendizados de três anos visitando comunidades intencionais. Uma rede viva de conexões, saberes e práticas colaborativas para transformação social.</p>
+                </div>
+            </div>
 
-  <footer>
-    <p>© 2025 Coletivo Dois de Muitos. Sementes que germinam em movimento.</p>
-  </footer>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">1º Semestre 2025</div>
+                    <h3>Coletivo de Artes e Poesia</h3>
+                    <p>Publicação de dois livros poéticos que documentam nossa jornada. Criações que refletem a beleza e a profundidade do movimento coletivo.</p>
+                </div>
+                <div class="timeline-image">📚✍️</div>
+            </div>
 
-  <script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+            <div class="timeline-item">
+                <div class="timeline-image">🪶🎨</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Fase Construtiva</div>
+                    <h3>Ateliê de Manifestações Artísticas Originárias</h3>
+                    <p>Criação de itens próprios e apoio a comunidades. Arte ancestral, cerâmica, aromas e ecoindústrias em movimento contínuo.</p>
+                </div>
+            </div>
 
-    // SPA dinâmica: carrega conteúdo
-    async function carregarPortalConhecimento() {
-      try {
-        const response = await fetch('conhecimento.html');
-        if (!response.ok) throw new Error('Erro ao carregar portal');
-        const html = await response.text();
-        document.getElementById('conteudo-conhecimento').innerHTML = html;
-      } catch (error) {
-        document.getElementById('conteudo-conhecimento').innerHTML =
-          '<p style="color:red;text-align:center;">⚠️ Não foi possível carregar o Portal de Conhecimento.</p>';
-      }
-    }
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 em Diante</div>
+                    <h3>Viagem-Missão pelo Brasil</h3>
+                    <p>Levamos nossos projetos para diferentes regiões, conectando artistas, poetas e comunidades. Uma jornada de trocas, aprendizados e transformação.</p>
+                </div>
+                <div class="timeline-image">🚐🌎</div>
+            </div>
+        </div>
+    </section>
 
-    window.addEventListener('DOMContentLoaded', carregarPortalConhecimento);
-  </script>
+    <!-- ATELIER SECTION -->
+    <section id="atelier">
+        <h2>Ateliê e Loja</h2>
+        <p style="text-align:center;margin-bottom:2rem;font-size:1.05rem;">
+            Itens autorais e produtos das comunidades que visitamos. Cada compra apoia a continuidade da viagem e o trabalho com comunidades.
+        </p>
+        <div class="atelier-grid">
+            <div class="atelier-card">
+                <div class="atelier-image">🪶</div>
+                <div class="atelier-content">
+                    <h3>Cerâmica Ancestral</h3>
+                    <p>Peças criadas com técnicas originárias, cada uma única e carregada de intenção.</p>
+                    <div class="atelier-price">R$ 85,00</div>
+                    <a href="#" class="btn btn-primary" style="margin-top:1rem;width:100%;text-align:center;">Comprar</a>
+                </div>
+            </div>
+
+            <div class="atelier-card">
+                <div class="atelier-image">🌿</div>
+                <div class="atelier-content">
+                    <h3>Aromas Naturais</h3>
+                    <p>Essências produzidas artesanalmente no ateliê móvel, inspiradas em plantas sagradas.</p>
+                    <div class="atelier-price">R$ 45,00</div>
+                    <a href="#" class="btn btn-primary" style="margin-top:1rem;width:100%;text-align:center;">Comprar</a>
+                </div>
+            </div>
+
+            <div class="atelier-card">
+                <div class="atelier-image">📚</div>
+                <div class="atelier-content">
+                    <h3>Livros Poéticos</h3>
+                    <p>Publicações do Coletivo com poesias, relatos e reflexões sobre arte e transformação.</p>
+                    <div class="atelier-price">R$ 55,00</div>
+                    <a href="#" class="btn btn-primary" style="margin-top:1rem;width:100%;text-align:center;">Comprar</a>
+                </div>
+            </div>
+
+            <div class="atelier-card">
+                <div class="atelier-image">🎨</div>
+                <div class="atelier-content">
+                    <h3>Obras Visuais</h3>
+                    <p>Pinturas e colagens que documentam nossa jornada e visão artística.</p>
+                    <div class="atelier-price">R$ 120,00</div>
+                    <a href="#" class="btn btn-primary" style="margin-top:1rem;width:100%;text-align:center;">Comprar</a>
+                </div>
+            </div>
+
+            <div class="atelier-card">
+                <div class="atelier-image">🎵</div>
+                <div class="atelier-content">
+                    <h3>Composições Autorais</h3>
+                    <p>Músicas criadas durante nossas viagens e oficinas colaborativas.</p>
+                    <div class="atelier-price">R$ 25,00</div>
+                    <a href="#" class="btn btn-primary" style="margin-top:1rem;width:100%;text-align:center;">Comprar</a>
+                </div>
+            </div>
+
+            <div class="atelier-card">
+                <div class="atelier-image">🌺</div>
+                <div class="atelier-content">
+                    <h3>Kits de Bem-estar</h3>
+                    <p>Combinações de aromas, ervas e cristais para práticas de autocuidado.</p>
+                    <div class="atelier-price">R$ 95,00</div>
+                    <a href="#" class="btn btn-primary" style="margin-top:1rem;width:100%;text-align:center;">Comprar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NFTS GALLERY -->
+    <section id="nfts">
+        <h2>Vitrine Artística - NFTs</h2>
+        <p style="text-align:center;margin-bottom:2rem;font-size:1.05rem;">
+            Criações digitais certificadas que documentam nossa jornada. Cada NFT representa um momento, uma inspiração, uma conexão.
+        </p>
+        <div class="nft-gallery">
+            <div class="nft-card">
+                <div class="nft-image">🌟</div>
+                <div class="nft-content">
+                    <h3>Constelação de Sementes</h3>
+                    <p>Uma representação digital da rede de conexões que cultivamos.</p>
+                    <p style="font-size:0.9rem;color:var(--terra-medio);margin-top:0.5rem;">Blockchain: Polygon</p>
+                </div>
+            </div>
+
+            <div class="nft-card">
+                <div class="nft-image">🎭</div>
+                <div class="nft-content">
+                    <h3>Máscaras do Ser</h3>
+                    <p>Exploração visual sobre identidade e autenticidade do Avatar.</p>
+                    <p style="font-size:0.9rem;color:var(--terra-medio);margin-top:0.5rem;">Blockchain: Polygon</p>
+                </div>
+            </div>
+
+            <div class="nft-card">
+                <div class="nft-image">🌊</div>
+                <div class="nft-content">
+                    <h3>Fluxo das Teias</h3>
+                    <p>Visualização dos aprendizados em comunidades intencionais.</p>
+                    <p style="font-size:0.9rem;color:var(--terra-medio);margin-top:0.5rem;">Blockchain: Polygon</p>
+                </div>
+            </div>
+
+            <div class="nft-card">
+                <div class="nft-image">✨</div>
+                <div class="nft-content">
+                    <h3>Poesia em Movimento</h3>
+                    <p>Animação das palavras que compõem nossos livros poéticos.</p>
+                    <p style="font-size:0.9rem;color:var(--terra-medio);margin-top:0.5rem;">Blockchain: Polygon</p>
+                </div>
+            </div>
+
+            <div class="nft-card">
+                <div class="nft-image">🎨</div>
+                <div class="nft-content">
+                    <h3>Paleta de Cores Ancestrais</h3>
+                    <p>Cores e padrões das comunidades que visitamos.</p>
+                    <p style="font-size:0.9rem;color:var(--terra-medio);margin-top:0.5rem;">Blockchain: Polygon</p>
+                </div>
+            </div>
+
+            <div class="nft-card">
+                <div class="nft-image">🚀</div>
+                <div class="nft-content">
+                    <h3>Jornada em Movimento</h3>
+                    <p>Mapa interativo da viagem-missão pelo Brasil.</p>
+                    <p style="font-size:0.9rem;color:var(--terra-medio);margin-top:0.5rem;">Blockchain: Polygon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTRIBUTION SECTION -->
+    <section id="contribuir" class="contribution-section">
+        <h2 class="contribution-title">Contribua e Faça Parte da Rede</h2>
+        <p class="contribution-subtitle">
+            Cada contribuição ajuda a custear a viagem-missão e apoiar as comunidades que visitamos. Em troca, você recebe créditos 2dM para acessar conteúdos, fazer conexões e se inspirar.
+        </p>
+        <p style="text-align:center;margin-bottom:2rem;color:var(--terra-escuro);">
+            <strong>1 2dM Coin = R$ 1,00</strong> | Cada compra na loja gera desconto em consultorias
+        </p>
+
+        <div class="packages-grid">
+            <div class="package-card">
+                <div class="package-name">🌱 Starter</div>
+                <div class="package-value">10 CNX</div>
+                <div class="package-description">
+                    Acesso inicial à comunidade. Receba boas-vindas e primeiras conexões.
+                </div>
+                <a href="#" class="btn btn-primary" style="width:100%;">Contribuir</a>
+            </div>
+
+            <div class="package-card">
+                <div class="package-name">🌿 Conexão</div>
+                <div class="package-value">25 CNX</div>
+                <div class="package-description">
+                    Contato e indicações relevantes. Acesse a rede de artistas e comunidades.
+                </div>
+                <a href="#" class="btn btn-primary" style="width:100%;">Contribuir</a>
+            </div>
+
+            <div class="package-card">
+                <div class="package-name">🌳 Rede</div>
+                <div class="package-value">50 CNX</div>
+                <div class="package-description">
+                    Acesso ao grupo 2dM por 30 dias. Conheça membros e parceiros principais.
+                </div>
+                <a href="#" class="btn btn-primary" style="width:100%;">Contribuir</a>
+            </div>
+
+            <div class="package-card">
+                <div class="package-name">🌲 Parceiro</div>
+                <div class="package-value">100 CNX</div>
+                <div class="package-description">
+                    Acesso completo por 12 meses. Seja parte integral da jornada.
+                </div>
+                <a href="#" class="btn btn-primary" style="width:100%;">Contribuir</a>
+            </div>
+
+            <div class="package-card">
+                <div class="package-name">💼 Serviços</div>
+                <div class="package-value">10 CNX</div>
+                <div class="package-description">
+                    Acesso à rede de serviços por 7 dias. Consultorias e trocas.
+                </div>
+                <a href="#" class="btn btn-primary" style="width:100%;">Contribuir</a>
+            </div>
+
+            <div class="package-card">
+                <div class="package-name">📞 Contato Simples</div>
+                <div class="package-value">15 CNX</div>
+                <div class="package-description">
+                    Localize um perfil específico. Conecte-se com quem você busca.
+                </div>
+                <a href="#" class="btn btn-primary" style="width:100%;">Contribuir</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAL DE CONHECIMENTO (injetado via SPA) -->
+    <section id="conhecimento">
+        <h2>Portal de Conhecimento</h2>
+        <p style="text-align:center;color:var(--terra-escuro);margin-bottom:2rem;">
+            Espaço de trocas, saberes e partilhas da rede Dois de Muitos 🌱
+        </p>
+        <div id="conteudo-conhecimento" style="background:white;border-radius:20px;border:2px solid var(--terra-medio);padding:2rem;box-shadow:0 5px 25px rgba(0,0,0,0.05);">
+            <p style="text-align:center;color:var(--terra-medio);">Carregando conteúdo do portal...</p>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contato" class="contact-section">
+        <h2>Vamos Conversar</h2>
+        <p style="text-align:center;margin-bottom:2rem;color:var(--terra-escuro);">
+            Deixe seu contato e receba um <strong>Ebook gratuito</strong> com histórias, aprendizados e inspirações da nossa jornada.
+        </p>
+
+        <div class="contact-grid">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Seu Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem (opcional)</label>
+                    <textarea id="message" name="message" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Enviar e Receber Ebook</button>
+            </form>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-details">
+                        <h3>WhatsApp</h3>
+                        <p>Chatbot 24/7 para dúvidas rápidas e atendimento direto</p>
+                        <a href="https://wa.me/5511992451218" class="btn btn-secondary" style="margin-top:0.5rem;">Abrir Chat</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h3>E-mail</h3>
+                        <p>cristina.avatar@gmail.com</p>
+                        <p style="font-size:0.85rem;color:var(--terra-medio);">Resposta em até 24h</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📅</div>
+                    <div class="contact-details">
+                        <h3>Agende uma Consulta</h3>
+                        <p>Conversas personalizadas sobre projetos e parcerias</p>
+                        <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">Agendar</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🎵</div>
+                    <div class="contact-details">
+                        <h3>Ouça Nossa Playlist</h3>
+                        <p>Músicas que acompanham a jornada do Dois de Muitos</p>
+                        <a href="https://open.spotify.com/playlist/1cmrbif2z13TN6xZLHr7gf" class="btn btn-secondary" style="margin-top:0.5rem;">Spotify</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <h2 style="margin-bottom:1rem;">Dois de Muitos</h2>
+            <p style="margin-bottom:2rem;font-size:1.05rem;">
+                Uma jornada de arte, conexão e transformação social pelo Brasil.
+            </p>
+            <div class="footer-links">
+                <a href="https://open.spotify.com/show/2ZmtU4Z7EHwBjUiPrTxgAo">Podcast</a>
+                <a href="https://sites.google.com/alumni.usp.br/teias/inicio">Teias</a>
+                <a href="https://sites.google.com/site/treinamentoavatar">Avatar</a>
+                <a href="#atelier">Loja</a>
+                <a href="#nfts">NFTs</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <p style="margin-top:2rem;font-size:0.9rem;opacity:0.9;">
+                © 2025 Coletivo Dois de Muitos. Sementes que germinam em movimento.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // se o href for apenas "#" (logo) deixamos o comportamento padrão
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission (simples - placeholder)
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Obrigado pelo interesse! Em breve você receberá o Ebook no seu e-mail. 🌱');
+                this.reset();
+            });
+        }
+
+        // ===== SPA Dinâmica: Carrega o Portal de Conhecimento =====
+        async function carregarPortalConhecimento() {
+            const container = document.getElementById('conteudo-conhecimento');
+            if (!container) return;
+            try {
+                const resp = await fetch('conhecimento.html', { cache: "no-cache" });
+                if (!resp.ok) throw new Error('Resposta não OK');
+                const html = await resp.text();
+
+                // Opcional: evitar que tags <script> do arquivo injetado sejam ignoradas.
+                // Simples injeção de HTML:
+                container.innerHTML = html;
+
+                // Executa scripts injetados (se houver) — procura por <script> no texto injetado
+                // e os re-executa (apenas scripts inline).
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const scripts = temp.querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                    const s = document.createElement('script');
+                    if (oldScript.src) {
+                        s.src = oldScript.src;
+                        s.async = false;
+                    } else {
+                        s.textContent = oldScript.textContent;
+                    }
+                    document.body.appendChild(s);
+                    // opcional remover depois
+                    document.body.removeChild(s);
+                });
+
+            } catch (err) {
+                container.innerHTML = '<p style="color:red;text-align:center;">⚠️ Não foi possível carregar o Portal de Conhecimento.</p>';
+                console.error('erro ao carregar conhecimento:', err);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', carregarPortalConhecimento);
+    </script>
 </body>
 </html>
