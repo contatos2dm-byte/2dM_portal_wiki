@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Conhecimento - Dois de Muitos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Base de Conhecimento</h1>
+                <p>Dois de Muitos - Sementes que Germinam em Movimento</p>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-section">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Buscar artigos, tags ou tópicos..."
+                >
+                <button class="search-btn">🔍</button>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="categories-section">
+            <button class="category-btn active" data-category="all">Todas as Categorias</button>
+            <div id="categoriesContainer" class="categories-list"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="content-wrapper">
+            <!-- Article Section -->
+            <article class="article-section">
+                <div id="articleContainer" class="article-card">
+                    <!-- Article content will be loaded here -->
+                </div>
+
+                <!-- Feedback Section -->
+                <div class="feedback-section">
+                    <h3>Este artigo foi útil?</h3>
+                    <div class="feedback-buttons">
+                        <button class="feedback-btn helpful" id="helpfulBtn">👍 Sim</button>
+                        <button class="feedback-btn not-helpful" id="notHelpfulBtn">👎 Não</button>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="contact-section">
+                    <h3>❓ Ainda tem dúvida?</h3>
+                    <p>Não encontrou a resposta que procurava? Entre em contato conosco e nos ajude a melhorar esta base de conhecimento.</p>
+                    <button class="contact-btn" id="contactBtn">Enviar uma Mensagem</button>
+                    
+                    <form id="contactForm" class="contact-form hidden">
+                        <input type="text" placeholder="Seu nome" required>
+                        <input type="email" placeholder="Seu email" required>
+                        <textarea placeholder="Sua mensagem" rows="5" required></textarea>
+                        <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                        <button type="button" class="cancel-btn" id="cancelBtn">Cancelar</button>
+                    </form>
+                </div>
+
+                <!-- Related Articles -->
+                <div class="related-section">
+                    <h2>Artigos Relacionados</h2>
+                    <div id="relatedContainer" class="related-articles">
+                        <!-- Related articles will be loaded here -->
+                    </div>
+                </div>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h2>📊 Artigos Mais Acessados</h2>
+                    <div id="topArticlesContainer" class="top-articles">
+                        <!-- Top articles will be loaded here -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Dois de Muitos. Sementes que Germinam em Movimento.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
